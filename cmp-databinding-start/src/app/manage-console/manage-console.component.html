@@ -1,0 +1,19 @@
+
+      <p>Add new Servers or blueprints!</p>
+      <label>Server Name</label>
+      <!-- we can use some other method of databinding to get the data in the component from the template which are as follows:
+      Local Reference :- define a local reference in the template which can be used anywhere in the template 
+      and we can pass it to the eventhandler method in order to pass some value . 
+      -->
+      <!--<input type="text" class="form-control" [(ngModel)]="newServerName">-->
+      <input type="text" class="form-control" #serverInput>
+      <label>Server Content</label>
+      <input type="text" class="form-control" [(ngModel)]="newServerContent">
+      <br>
+      <button
+        class="btn btn-primary"
+        (click)="onAddServer(serverInput)">Add Server</button>
+      <button
+        class="btn btn-primary"
+        (click)="onAddBlueprint()">Add Server Blueprint</button>
+   

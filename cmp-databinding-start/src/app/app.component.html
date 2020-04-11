@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- we can  now bind the event we have created on app-manage componet.
+      $event used to send the event data to the event handler method
+      -->
+      <app-manage-console (bpCreated)='onAddBlueprint($event)' 
+      (srCreated)="onAddServer($event)"></app-manage-console>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <!--we will bind the serverelem property here with the proerty binding.-->
+      <app-display-console *ngFor='let i of serverElements' [serverelem]='i' >
+        <p>
+          <strong *ngIf="i.type === 'server'" style="color: red">{{ i.content }}</strong>
+          <em *ngIf="i.type === 'blueprint'">{{ i.content }}</em>
+        </p>
+
+      </app-display-console>
+    </div>
+  </div>
+</div>

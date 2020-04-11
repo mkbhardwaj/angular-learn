@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-ls-12">
+       <form (ngSubmit)='addIngredient()' #formRef='ngForm'> 
+           <div class="row">
+           <div class="col-sm-5 form-group">
+               <label for="name">Name</label>
+               <input type="text" id="name" class="form-control" ngModel name="name" />
+           </div>
+           <div class="col-sm-2">
+               <label for="amount">Amount</label>
+               <input type="text" id="amount" class="form-control" ngModel name="amount" >
+           </div>
+        </div>
+           <div class="row">
+               <div class="col-ls-12">
+                   <button type="submit" class="btn btn-success" ><span *ngIf='editMode==true;else add'>Edit</span>
+                    <ng-template #add><span >Add</span>
+                    </ng-template>
+                    </button>
+                   <button type="button" class="btn btn-danger" *ngIf='editMode==true' (click)='deleteIngredient()'>Delete</button>
+                   <button type="button" class="btn btn-primary" (click)='clearForm()'>Clear</button>
+               </div>
+           </div>
+       </form>
+    </div>
+</div>

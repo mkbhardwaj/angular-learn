@@ -1,0 +1,45 @@
+<form [formGroup]='recipeEditForm' (ngSubmit)='addRecipe()'>
+    <button type="submit" class="btn btn-success" [disabled]='!recipeEditForm.valid'>Save</button>
+
+    <button type="button" class="btn btn-danger" (click)='cancel()'>Cancel</button>
+    <div class='form-group'>
+        <label>Name:</label>
+        <input class="form-control" type='text' formControlName='name' />
+    </div>
+
+    <div class='form-group'>
+        <label>Description:</label>
+        <textarea class="form-control" type='text' rows="3" formControlName='description'> </textarea>
+    </div>
+
+    <div class='form-group'>
+        <label>Image Url:</label>
+        <input class="form-control" type='text' formControlName='imageurl' />
+    </div>
+
+    <div class='form-group'>
+        <img [src]='recipeEditForm.value.imageurl' />
+    </div>
+
+    <div class="row" formArrayName='ingredients'>
+<!-- form array is a array of formgroup so we have to provide all the form group name which will be generated automatically 
+by angular and it will be index of the form group in the array.-->
+        <div class="row" [formGroupName]="i" *ngFor='let icontrole of getRecipeControls();let i =index;'>
+            <!-- name of the form array-->
+            <div class="col-sm-6 form-group">
+                <label for="name">Name</label>
+                <input type="text"  class="form-control" formControlName='name' />
+            </div>
+            <div class="col-sm-3">
+                <label for="amount">Amount</label>
+                <input type="text"  class="form-control"  formControlName='amount'>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-danger" (click)='removeIngredient(i)'>x</button>
+            </div>
+        </div>
+    </div>
+    <hr />
+   <div class="row"><button type='button' class="btn btn-success" (click)='addIngredient()'>add ingredient</button></div>
+
+</form>

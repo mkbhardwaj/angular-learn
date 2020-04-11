@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <!--
+          Create a Form with the following Controls and Validators
+          1) Project Name (should not be empty)
+          2) Mail (should not be a empty and a valid email)
+          3) Project Status Dropdown, with three values: 'Stable', 'Critical', 'Finished'
+          4) Submit Button
+
+          Add your own Validator which doesn't allow "Test" as a Project Name
+
+          Also implement that Validator as an async Validator (replace the other one)
+
+          Upon submitting the form, simply print the value to the console
+      -->
+      <form [formGroup]='fGroup' (ngSubmit)='onSubmit()'>
+      <label>Project Name</label>
+<input formControlName='projectname' id='Project Name' type="text"/>
+
+<p *ngIf='!fGroup.get("projectname").valid'>Invalid form.</p>
+
+<label>Email</label>
+<input formControlName='email'  id='Email' type="text"/>
+
+
+
+<label>Project Status</label>
+<select formControlName='status'  id='status' >
+  <option value='Stable'>Stable</option>
+  
+  <option value='Critical'>Critical</option>
+  
+  <option value='Finished'>Finished</option>
+  </select>
+  <p *ngIf='!fGroup.valid'>Invalid form.</p>
+  <button type='submit'>Submit</button>
+</form>
+    </div>
+  </div>
+</div>
