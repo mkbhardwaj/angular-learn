@@ -1,0 +1,27 @@
+<label>Server Name:</label>
+<!--
+<input type="input" class="form-control" (input)='onUpdateServerName($event)' />
+-->
+<!-- this is an example of event binding (event)='function ' $event is a special variable associated with the 
+event which will provide details of the event getting fired.-->
+
+
+<input type="input" class="form-control" [(ngModel)]='serverName' />
+<!-- this is an example of two way data binding using ngModel directive [(ngModel)] = propertyname -->
+
+<br />
+<button class="btn btn-primary" [disabled]='!allowNewServer' (click)='onServerCreation()'> <!-- [property]='typescript syntax' 
+is called property binding which is binding a native property of html to a typescript expression.
+-->
+    Add Server
+</button>
+<p *ngIf='isServerCreated;'>{{serverCreationStatus}}</p>
+<!--
+<p *ngIf='isServerCreated; else servernotcreated'>{{serverCreationStatus}}</p>
+<ng-template  #servernotcreated> 
+   
+    <p>Server not created.</p>
+
+</ng-template>
+-->
+<app-server *ngFor='let s of serverList'></app-server>
